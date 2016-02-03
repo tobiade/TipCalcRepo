@@ -18,31 +18,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Bill Total (Post-Tax):" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08v-3s-DLZ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bill Total (Post-Tax):" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08v-3s-DLZ">
                                 <rect key="frame" x="22" y="81" width="151" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="151" id="Bcr-TX-t5k"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tax Percentage (0%):" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5kZ-GM-5tY">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tax Percentage (0%):" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5kZ-GM-5tY">
                                 <rect key="frame" x="20" y="120" width="164" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EOD-oW-GDJ">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EOD-oW-GDJ">
                                 <rect key="frame" x="192" y="77" width="392" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
-                            <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="6" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="Te2-ER-7IS">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="6" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="Te2-ER-7IS">
                                 <rect key="frame" x="190" y="116" width="396" height="31"/>
                                 <connections>
                                     <action selector="taxPercentageChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="WB7-aV-ZrS"/>
                                 </connections>
                             </slider>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EO3-Uw-hqY">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EO3-Uw-hqY">
                                 <rect key="frame" x="268" y="154" width="65" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="65" id="kEr-tP-nbg"/>
+                                </constraints>
                                 <state key="normal" title="Calculate">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -50,32 +56,35 @@
                                     <action selector="calculateTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Vqw-uZ-zlB"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XBs-OO-rwk">
-                                <rect key="frame" x="16" y="192" width="568" height="400"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kmM-ta-jVe">
+                                <rect key="frame" x="0.0" y="192" width="600" height="408"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <connections>
+                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="zbM-xw-zwV"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="QrP-JY-S08"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="EOD-oW-GDJ" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="4Jt-eZ-m0Z"/>
-                            <constraint firstItem="5kZ-GM-5tY" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="4" id="5AT-89-N5D"/>
-                            <constraint firstItem="Te2-ER-7IS" firstAttribute="leading" secondItem="5kZ-GM-5tY" secondAttribute="trailing" constant="8" symbolic="YES" id="9eY-qi-rwd"/>
-                            <constraint firstItem="5kZ-GM-5tY" firstAttribute="top" secondItem="08v-3s-DLZ" secondAttribute="bottom" constant="18" id="IpO-S2-r1g"/>
-                            <constraint firstItem="Te2-ER-7IS" firstAttribute="leading" secondItem="EOD-oW-GDJ" secondAttribute="leading" id="LBb-9D-hwA"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="XBs-OO-rwk" secondAttribute="bottom" constant="8" symbolic="YES" id="Sqf-fh-DRk"/>
-                            <constraint firstItem="08v-3s-DLZ" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="17" id="TIQ-hR-9Ub"/>
-                            <constraint firstItem="Te2-ER-7IS" firstAttribute="trailing" secondItem="XBs-OO-rwk" secondAttribute="trailing" id="ViA-jS-m5K"/>
-                            <constraint firstItem="XBs-OO-rwk" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="WGv-Bj-RWi"/>
-                            <constraint firstItem="EOD-oW-GDJ" firstAttribute="leading" secondItem="08v-3s-DLZ" secondAttribute="trailing" constant="19" id="YMU-Xw-9uS"/>
-                            <constraint firstItem="EO3-Uw-hqY" firstAttribute="top" secondItem="Te2-ER-7IS" secondAttribute="bottom" constant="8" symbolic="YES" id="hMu-od-DPV"/>
-                            <constraint firstItem="Te2-ER-7IS" firstAttribute="top" secondItem="EOD-oW-GDJ" secondAttribute="bottom" constant="9" id="iKd-k6-o7L"/>
-                            <constraint firstItem="EOD-oW-GDJ" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="13" id="jLP-Ab-L2t"/>
-                            <constraint firstItem="XBs-OO-rwk" firstAttribute="top" secondItem="EO3-Uw-hqY" secondAttribute="bottom" constant="8" symbolic="YES" id="k6T-TH-bOA"/>
-                            <constraint firstItem="Te2-ER-7IS" firstAttribute="trailing" secondItem="EOD-oW-GDJ" secondAttribute="trailing" id="u3X-US-JQ7"/>
-                            <constraint firstItem="XBs-OO-rwk" firstAttribute="centerX" secondItem="EO3-Uw-hqY" secondAttribute="centerX" id="zuM-64-CaB"/>
+                            <constraint firstItem="Te2-ER-7IS" firstAttribute="leading" secondItem="EOD-oW-GDJ" secondAttribute="leading" id="0R4-6V-az3"/>
+                            <constraint firstItem="EO3-Uw-hqY" firstAttribute="top" secondItem="Te2-ER-7IS" secondAttribute="bottom" constant="8" symbolic="YES" id="1IS-OD-Uf9"/>
+                            <constraint firstAttribute="trailing" secondItem="kmM-ta-jVe" secondAttribute="trailing" id="3MY-Rr-2Ls"/>
+                            <constraint firstItem="08v-3s-DLZ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="2" id="4h2-TU-opZ"/>
+                            <constraint firstItem="kmM-ta-jVe" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="6Z7-OG-B0R"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="EOD-oW-GDJ" secondAttribute="trailing" constant="-4" id="CD3-KH-gSG"/>
+                            <constraint firstItem="Te2-ER-7IS" firstAttribute="centerY" secondItem="5kZ-GM-5tY" secondAttribute="centerY" id="GqE-EE-RSb"/>
+                            <constraint firstItem="EOD-oW-GDJ" firstAttribute="leading" secondItem="08v-3s-DLZ" secondAttribute="trailing" constant="19" id="N6d-TZ-MHV"/>
+                            <constraint firstItem="5kZ-GM-5tY" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="ONi-QR-Bam"/>
+                            <constraint firstItem="kmM-ta-jVe" firstAttribute="top" secondItem="EO3-Uw-hqY" secondAttribute="bottom" constant="8" symbolic="YES" id="S0O-vs-pXv"/>
+                            <constraint firstItem="EOD-oW-GDJ" firstAttribute="trailing" secondItem="Te2-ER-7IS" secondAttribute="trailing" id="TUg-Oh-NvX"/>
+                            <constraint firstItem="kmM-ta-jVe" firstAttribute="centerX" secondItem="EO3-Uw-hqY" secondAttribute="centerX" id="TkU-xC-mJr"/>
+                            <constraint firstItem="kmM-ta-jVe" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="VT2-FW-sll"/>
+                            <constraint firstItem="EOD-oW-GDJ" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="13" id="YPo-wG-J8o"/>
+                            <constraint firstItem="EOD-oW-GDJ" firstAttribute="centerY" secondItem="08v-3s-DLZ" secondAttribute="centerY" id="YRe-4n-c0W"/>
+                            <constraint firstItem="Te2-ER-7IS" firstAttribute="leading" secondItem="5kZ-GM-5tY" secondAttribute="trailing" constant="8" symbolic="YES" id="aIp-kv-opI"/>
+                            <constraint firstItem="Te2-ER-7IS" firstAttribute="top" secondItem="EOD-oW-GDJ" secondAttribute="bottom" constant="9" id="yf4-Ay-dGT"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="TbR-FR-s0N" appends="YES" id="9ve-wV-pqK"/>
@@ -83,7 +92,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Tip Calculator" id="jj4-VO-G30"/>
                     <connections>
-                        <outlet property="resultsTextView" destination="XBs-OO-rwk" id="rtX-13-WD9"/>
+                        <outlet property="tableView" destination="kh9-bI-dsS" id="M4D-1c-gsn"/>
                         <outlet property="taxPctLabel" destination="5kZ-GM-5tY" id="4Bg-kK-pgf"/>
                         <outlet property="taxPctSlider" destination="Te2-ER-7IS" id="R7S-1a-BaP"/>
                         <outlet property="totalTextField" destination="EOD-oW-GDJ" id="1WC-lI-ceS"/>
