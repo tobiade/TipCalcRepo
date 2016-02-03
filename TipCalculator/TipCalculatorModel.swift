@@ -1,7 +1,7 @@
 //
 //  TipCalculatorModel.swift
 //  TipCalculator
-//
+// Tobiiiiii
 //  Created by Main Account on 12/18/14.
 //  Copyright (c) 2014 Razeware LLC. All rights reserved.
 //
